@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <!-- JQuery -->
+    <script src="/frontend/libs/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+
+    <!-- Angular libs -->
+    <script src="/frontend/libs/angular-1.6.1/angular.min.js"></script>
+    <script src="/frontend/libs/angular-1.6.1/angular-resource.min.js"></script>
+    <script src="/frontend/libs/angular-ui-router-0.4.2/angular-ui-router.min.js"></script>
+    
+    <!-- Bootstrap libs -->
+    <script src="/frontend/libs/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="/frontend/libs/ui-bootstrap-2.5.0/ui-bootstrap-tpls-2.5.0.min.js"></script>
+
+    <!-- Bootstrap Stylesheets -->
+    <link rel="stylesheet" href="/frontend/libs/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/frontend/libs/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">
+    
+    <!-- App libs -->
+    <script src="./index.js"></script>
+    <script src="/frontend/controllers/headerController.js"></script>
+    <script src="/frontend/controllers/personsController.js"></script>
+    <script src="/frontend/controllers/entriesController.js"></script>
+    
+    <!-- App Stylesheets -->
+    <link rel="stylesheet" href="./styles/app.css">
+
+    <meta charset="utf-8">
+    <title>Accounting App</title>
+  </head>
+  <body>
+    <div ng-app="app" class="container">  
+      <div ui-view="header"></div>
+      <div ui-view="content" class="content"></div>
+      <div ui-view="footer" class="footer"></div>
+    </div>
+  </body>
+
+</html>

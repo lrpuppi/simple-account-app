@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head></head>
+
+  <body>
+    
+    <!-- List view -->
+    <div id="list"  ng-show="mode == 'LIST'">
+      <div class="panel panel-default">
+        <div class="panel-heading">Entries
+            <span><button class="btn btn-default " ng-click = "add()">Add</button></span>
+        </div>
+        <div class="panel-body">
+          <div class="row row-m-t" ng-repeat="entry in entries">
+            <div class="col-xs-8"><a ng-click = "edit(entry.id)">{{entry.id}} - {{entry.description}}</a></div>
+            <div class="col-xs-4">
+              <button class="btn btn-default btn-sm" ng-click = "edit(entry.id)">Edit</button>
+              <button class="btn btn-default btn-sm" ng-click = "delete(entry.id)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail view -->
+    <div id="detail" ng-hide="mode == 'LIST'">
+      <div class="panel panel-default">
+        <div class="panel-heading">Entry
+          <span><button ng-click = "update(entry)" ng-show="mode == 'EDIT'">Update</button></span>
+          <span><button ng-click = "save(entry)" ng-show="mode == 'ADD'">Save</button></span>
+          <span><button ng-click = "refresh()">Cancel</button></span>
+        </div>
+        <div class="panel-body">
+
+          <div class="row">
+            <label class="col-xs-2">Id:</label>
+            <input class="col-xs-1" type="text" ng-model="entry.id" disabled>
+          </div>
+
+          <div class="row">
+            <label class="col-xs-2">Description:</label>
+            <input class="col-xs-8" type="text" ng-model="entry.description" >
+          </div>
+      
+          <div class="row">
+            <label class="col-xs-2">Due date:</label>
+            <div class="col-xs-8">
+              <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="entry.due_date" is-open="popup1.opened" ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </p>
+            </div>
+          </div>
+          
+          <div class="row">
+            <label class="col-xs-2">Payment date:</label>
+            <div class="col-xs-8">
+              <p class="input-group">
+                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="entry.payment_date" is-open="popup2.opened" ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+              </p>
+            </div>
+          </div>
+          
+          <div class="row">
+            <label class="col-xs-2">Type:</label>
+            <input class="col-xs-8" type="text" ng-model="entry.type" >
+          </div>
+                  
+          <div class="row">
+            <label class="col-xs-2">Value:</label>
+            <input class="col-xs-8" type="text" ng-model="entry.value" >
+          </div>
+      
+          <div class="row">
+            <label class="col-xs-2">Person:</label>
+            <input class="col-xs-8" type="text" ng-model="entry.person_id" >
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+
+</html>

@@ -1,0 +1,9 @@
+<div class="jumbotron">
+    <h1>Home page</h1>
+    <p>Please select one of the choices below</p>
+    <div ng-controller="HeaderController">
+            <a class="btn btn-primary" href="#persons" ui-sref="pages.persons" ng-click="onClick($event)">Persons</a>
+            <a class="btn btn-primary" href="#entries" ui-sref="pages.entries" ng-click="onClick($event)">Entries</a>
+            <a class="btn btn-primary" href="#about" ui-sref="pages.about" ng-click="onClick($event)">About</a>
+    </div>
+</div>

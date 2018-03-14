@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head></head>
+
+  <body>
+    <!-- List view -->
+    <div id="lista"  ng-show="mode == 'LIST'">
+      <div class="panel panel-default">
+        <div class="panel-heading">Persons
+            <span><button class="btn btn-default " ng-click = "add()">Add</button></span>
+        </div>
+        <div class="panel-body">
+            <div class="row row-m-t" ng-repeat="person in persons">
+                <div class="col-xs-8"><a ng-click = "edit(person.id)">{{person.id}} - {{person.name}}</a></div>
+                <div class="col-xs-4">
+                    <button class="btn btn-default btn-sm" ng-click = "edit(person.id)">Edit</button>
+                    <button class="btn btn-default btn-sm" ng-click = "delete(person.id)">Delete</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail view -->
+    <div id="detalhe" ng-hide="mode == 'LIST'">
+      <div class="panel panel-default">
+        <div class="panel-heading">Person
+          <span><button ng-click = "update(person)" ng-show="mode == 'EDIT'">Update</button></span>
+          <span><button ng-click = "save(person)" ng-show="mode == 'ADD'">Save</button></span>
+          <span><button ng-click = "refresh()">Cancel</button></span>
+        </div>
+        <div class="panel-body">
+          <div>
+            <div class="row">
+              <label class="col-xs-2">Id:</label>
+              <input class="col-xs-1" type="text" ng-model="person.id" disabled>
+            </div>
+            <div class="row">
+              <label class="col-xs-2">Name:</label>
+              <input  class="col-xs-8" type="text" ng-model="person.name">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -78,8 +78,11 @@
       
           <div class="row">
             <label class="col-xs-2">Person:</label>
-            <input class="col-xs-8" type="text" ng-model="entry.person_id" >
+            <div class="col-xs-8">
+              <select ng-model="entry.person_id" data-ng-options="person.id as person.name for person in persons"></select>
+            </div>
           </div>
+              
         </div>
       </div>
     </div>

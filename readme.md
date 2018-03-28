@@ -34,10 +34,10 @@ Version 5
 * Navbar inclusion
 * Lançamentos CRUD
 * GIT upload
+* Person selector on entries page
 
 Todo:
 - Filters
 - Validators
 - Define API error codes and messages
 - User authentication
-- Person selector on entries page

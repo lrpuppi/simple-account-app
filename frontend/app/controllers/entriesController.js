@@ -1,8 +1,11 @@
 app.controller('entriesController', function($scope, $filter, $resource){
 
-    var resource = 	$resource('/api/entries/:id', null, {
+    var resourceEntries = 	$resource('/api/entries/:id', null, {
   						'update': { method:'PUT' }
 					});
+	var resourcePersons =	$resource('/api/persons');
+	
+	$scope.persons = [];
 
     $scope.refresh = function(){
 		$scope.load();
@@ -10,19 +13,23 @@ app.controller('entriesController', function($scope, $filter, $resource){
 	}
 
     $scope.load = function(){
-	    resource.query(function(data){
+	    resourceEntries.query(function(data){
 			$scope.entries = data;
-	    });
+		});
+
+		resourcePersons.query(function(data){
+			$scope.persons = data;
+		});
 	}
 
 	$scope.save = function(entry){
-		var newEntry = new resource({
+		var newEntry = new resourceEntries({
 			payment_date: 		entry.payment_date,
 			due_date: 			entry.due_date,
 			description: 		entry.description,
 			type: 				entry.type,
 			value: 				entry.value,
-			person_id: 			entry.person_id,
+			person_id: 			entry.person_id
 		});
 		newEntry.$save();
 		$scope.refresh();
@@ -37,16 +44,18 @@ app.controller('entriesController', function($scope, $filter, $resource){
 			type: 				entry.type,
 			value: 				entry.value,
 			person_id: 			entry.person_id
-		}, function(){
+		 },
+		 function(){
 			$scope.refresh();
 		});
 	}
 
 	$scope.edit = function(id){
-		resource.get({id: id}, function(data){
+		resourceEntries.get({id: id}, function(data){
 			$scope.entry = data;
 			$scope.entry.payment_date = new Date(data.payment_date);
 			$scope.entry.due_date = new Date(data.due_date);
+
 			$scope.mode = 'EDIT';
 		});
 	}
@@ -57,13 +66,13 @@ app.controller('entriesController', function($scope, $filter, $resource){
 	}
 
 	$scope.delete = function(id){
-		resource.delete({id: id});
+		resourceEntries.delete({id: id});
 		$scope.load();
 	}
 
 
-    //Init
-    $scope.entry = {};
+	//Init
+	$scope.entry = {};
     $scope.mode = 'LIST';
 	$scope.refresh();
 

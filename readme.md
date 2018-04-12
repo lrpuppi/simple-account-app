@@ -32,7 +32,7 @@ Version 4
 Version 5
 * Bootstrap styles
 * Navbar inclusion
-* Lançamentos CRUD
+* Entries CRUD
 * GIT upload
 * Person selector on entries page
 

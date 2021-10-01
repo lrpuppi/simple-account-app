@@ -15,6 +15,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
+db.createDatabase();
+
 // Routes must be defined after body parser
 app.use(routerPersons);		// Persons API
 app.use(routeEntries);		// Entries API

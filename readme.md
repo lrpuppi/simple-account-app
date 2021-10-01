@@ -1,7 +1,9 @@
 # Simple MEAN APP 
 #
-# To start up the application in the default port (3000), just run from command line:
+# To start up the application in the default port (3000), just run from commands:
 #
+# cd simple-account-app
+# npm install
 # node app.js
 #
 # RESTFul API documentation available at http://localhost:3000/api-docs/
